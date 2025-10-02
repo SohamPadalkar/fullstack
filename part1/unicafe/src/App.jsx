@@ -16,8 +16,10 @@ const Statistics = ({ good, neutral, bad }) => (
     <p>good {good}</p>
     <p>neutral {neutral}</p>
     <p>bad {bad}</p>
+    <p>all {good + neutral + bad}</p>
   </div>
 );
+
 
 const App = () => {
   const [good, setGood] = useState(0);
@@ -38,6 +40,7 @@ const App = () => {
     console.log("rating bad, previous count", bad);
     setBad(bad + 1);
   };
+
 
   return (
     <div>
