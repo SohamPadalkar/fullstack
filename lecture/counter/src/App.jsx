@@ -1,19 +1,38 @@
-import { useState } from 'react'
+import { useState } from "react";
+
+const Display = ({ counter }) => {
+  return <div>{counter}</div>;
+};
+
+const Button = (props) => {
+  return <button onClick={props.onClick}>{props.text}</button>;
+};
 
 const App = () => {
+  const [counter, setCounter] = useState(0);
+  console.log("rendering with counter value", counter);
 
-  const [ counter, setCounter ] = useState(0)
-  
-  setTimeout(
-    () => setCounter(counter + 1),
-    1000
-  )
-
-  console.log('rendering...', counter)
+  const increaseByOne = () => {
+    console.log("increasing, value before", counter);
+    setCounter(counter + 1);
+  };
+  const setToZero = () => {
+    console.log("resetting the value to zero, value before", counter);
+    setCounter(0);
+  };
+  const decreaseByOne = () => {
+    console.log("decreasing the counter, value before", counter);
+    setCounter(counter - 1);
+  };
 
   return (
-    <div>{ counter }</div>
-  )
-}
+    <div>
+      <Display counter={counter} />
+      <Button onClick={increaseByOne} text="plus" />
+      <Button onClick={setToZero} text="zero" />
+      <Button onClick={decreaseByOne} text="minus" />
+    </div>
+  );
+};
 
-export default App
+export default App;
