@@ -11,14 +11,70 @@ const Display = ({ text }) => {
 const Button = ({ onClick, text }) => {
   return <button onClick={onClick}>{text}</button>;
 };
-const Statistics = ({ good, neutral, bad }) => (
+
+const Statistics = ({ good, neutral, bad }) => {
+  if (good + neutral + bad === 0) {
+    return(
+      <div>
+        <p>No feedback given</p>
+      </div>
+    )
+  }
+  return(
   <div>
-    <p>good {good}</p>
-    <p>neutral {neutral}</p>
-    <p>bad {bad}</p>
-    <p>all {good + neutral + bad}</p>
+    <table>
+      <tr>
+        <td>
+          good
+        </td>
+        <td>
+          {good}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          neutral
+        </td>
+        <td>
+          {neutral}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          bad
+        </td>
+        <td>
+          {bad}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          all
+        </td>
+        <td>
+          {good + neutral + bad}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          average
+        </td>
+        <td>
+          {(good*1 + bad*(-1)) / good + bad + neutral}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          positive
+        </td>
+        <td>
+          {(good / (good + bad + neutral)) * 100} %
+        </td>
+      </tr>
+    </table>
   </div>
-);
+  )
+}
 
 
 const App = () => {
